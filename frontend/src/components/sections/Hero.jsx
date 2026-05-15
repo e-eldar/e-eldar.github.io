@@ -23,9 +23,16 @@ export default function Hero() {
     { icon: Sparkles, label: t('hero.cards.ui'), value: 'React Bits' },
   ];
 
+  const titleLine1Parts = String(t('hero.line1') || '')
+    .split(' ')
+    .filter(Boolean);
+  const titleLine2Parts = String(t('hero.line2') || '')
+    .split(' ')
+    .filter(Boolean);
+
   return (
     <section className="relative z-10 overflow-hidden pt-32 sm:pt-36 lg:pt-40">
-      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(340px,.98fr)] lg:gap-16">
+      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,.88fr)] lg:gap-16 xl:grid-cols-[minmax(0,1.18fr)_minmax(360px,.82fr)]">
         <div className="min-w-0 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -50,10 +57,18 @@ export default function Hero() {
             initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-[11ch] break-words font-display text-[clamp(3rem,7.8vw,6.8rem)] font-extrabold leading-[0.94] tracking-[-0.07em] text-white sm:max-w-none"
+            className="mt-5 max-w-[900px] break-normal font-display text-[clamp(3.05rem,7.15vw,6.25rem)] font-extrabold leading-[0.95] tracking-[-0.068em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(4rem,7.25vw,6.55rem)] lg:text-[clamp(4.4rem,6.6vw,6.65rem)]"
           >
-            <span className="block">{t('hero.line1')}</span>
-            <span className="block gradient-text">{t('hero.line2')}</span>
+            {titleLine1Parts.map(part => (
+              <span key={`line1-${part}`} className="block w-fit max-w-full whitespace-nowrap">
+                {part}
+              </span>
+            ))}
+            {titleLine2Parts.map(part => (
+              <span key={`line2-${part}`} className="block w-fit max-w-full whitespace-nowrap gradient-text">
+                {part}
+              </span>
+            ))}
           </motion.h1>
 
           <motion.div
