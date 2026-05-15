@@ -34,9 +34,9 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? 'border-white/10 bg-ink/90 py-3 shadow-[0_20px_50px_rgba(0,0,0,.45)] backdrop-blur-2xl' : 'border-white/5 bg-ink/55 py-5 backdrop-blur-xl'}`}>
+    <header className={`site-header fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${scrolled ? 'border-white/10 bg-ink/90 py-3 shadow-[0_20px_50px_rgba(0,0,0,.45)] backdrop-blur-2xl' : 'border-white/5 bg-ink/55 py-4 backdrop-blur-xl'}`}>
       <nav className="container-pro flex items-center justify-between gap-4">
-        <Link to="/" className="font-display text-2xl font-extrabold tracking-[-0.04em] gradient-text" onClick={() => setOpen(false)}>
+        <Link to="/" className="site-brand font-display text-xl font-extrabold tracking-[-0.04em] gradient-text sm:text-2xl" onClick={() => setOpen(false)}>
           {profile.brand}
         </Link>
 
@@ -60,14 +60,14 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setLangOpen(v => !v)}
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 font-mono text-xs text-white transition hover:border-violet/60"
+              className="language-toggle inline-flex h-11 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 font-mono text-xs text-white transition hover:border-violet/60"
               aria-label="Change language"
             >
               <Flag code={languages[lang].flag} alt={languages[lang].label} />
               <span>{languages[lang].code}</span>
             </button>
             {langOpen && (
-              <div className="absolute right-0 mt-3 w-52 rounded-2xl border border-white/10 bg-panel/95 p-2 shadow-card backdrop-blur-2xl">
+              <div className="language-menu absolute right-0 mt-3 w-52 rounded-2xl border border-white/10 bg-panel/95 p-2 shadow-card backdrop-blur-2xl">
                 {Object.entries(languages).map(([code, meta]) => (
                   <button
                     type="button"
@@ -95,8 +95,8 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="container-pro mt-4 lg:hidden">
-          <div className="rounded-3xl border border-white/10 bg-panel/95 p-3 shadow-card backdrop-blur-2xl">
+        <div className="container-pro mobile-menu-holder mt-4 lg:hidden">
+          <div className="mobile-menu-panel rounded-3xl border border-white/10 bg-panel/95 p-3 shadow-card backdrop-blur-2xl">
             {nav.map(item => (
               <NavLink
                 key={item.to}

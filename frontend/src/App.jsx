@@ -16,7 +16,7 @@ export default function App() {
   const isAdminPage = location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen overflow-hidden bg-ink text-white">
+    <div className="min-h-screen overflow-x-hidden bg-ink text-white">
       <ReactBitsBackdrop />
       <CursorGlow />
       {!isAdminPage && <Navbar />}

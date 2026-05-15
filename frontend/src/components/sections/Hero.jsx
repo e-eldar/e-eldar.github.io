@@ -11,6 +11,7 @@ import GlareHover from '../reactbits/GlareHover.jsx';
 import ScrollVelocity from '../reactbits/ScrollVelocity.jsx';
 
 const techRail = ['React', 'Vite', 'Tailwind', 'React Bits', 'Node.js', 'Express', 'SQLite', 'Auth', 'REST APIs', 'Responsive UI'];
+const heroTitleLines = ['Junior', 'Full-Stack', 'Web-Developer'];
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -22,20 +23,18 @@ export default function Hero() {
     { icon: LockKeyhole, label: t('hero.cards.systems'), value: 'Auth + APIs' },
     { icon: Sparkles, label: t('hero.cards.ui'), value: 'React Bits' },
   ];
-  // Hero title is locked to 3 clean lines so it never gets hidden by the card.
-  const heroTitleLines = ['Junior', 'Full-Stack', 'Web-Developer'];
 
   return (
-    <section className="relative z-10 overflow-visible pt-32 sm:pt-36 lg:pt-40">
-      <div className="container-pro hero-layout-grid grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.68fr)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(360px,0.66fr)]">
-        <div className="min-w-0 max-w-[40rem] overflow-visible">
+    <section className="hero-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
+      <div className="container-pro hero-grid-responsive grid min-h-[calc(100vh-5rem)] min-w-0 items-center gap-10 pb-12 md:pb-16 xl:grid-cols-[minmax(0,0.98fr)_minmax(360px,0.72fr)] xl:gap-14">
+        <div className="hero-copy min-w-0 overflow-visible">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
-            className="inline-flex flex-wrap items-center gap-3 rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[0.72rem] uppercase tracking-[0.18em] text-violet shadow-glow"
+            className="hero-badge inline-flex max-w-full flex-wrap items-center gap-3 rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-violet shadow-glow sm:text-[0.72rem]"
           >
-            <span className="h-2 w-2 rounded-full bg-mint shadow-[0_0_20px_rgba(52,211,153,.75)]" />
+            <span className="h-2 w-2 shrink-0 rounded-full bg-mint shadow-[0_0_20px_rgba(52,211,153,.75)]" />
             <ShinyText>{t('hero.badge')}</ShinyText>
           </motion.div>
 
@@ -43,7 +42,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.12, duration: 0.8 }}
-            className="mt-6 font-mono text-xs uppercase tracking-[0.24em] text-dim"
+            className="hero-eyebrow mt-6 font-mono text-xs uppercase tracking-[0.24em] text-dim"
           >
             {t('hero.eyebrow')}
           </motion.div>
@@ -57,7 +56,7 @@ export default function Hero() {
             {heroTitleLines.map((line, index) => (
               <span
                 key={line}
-                className={index === 2 ? 'hero-title-line hero-title-line-gradient' : 'hero-title-line'}
+                className={index === 2 ? 'hero-title-line hero-title-line-gradient hero-title-line-long' : 'hero-title-line'}
               >
                 {line}
               </span>
@@ -78,7 +77,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.44, duration: 0.75 }}
-            className="mt-6 max-w-2xl text-lg leading-9 text-muted sm:text-xl"
+            className="hero-lead mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg lg:text-xl"
           >
             {t('hero.lead')}
           </motion.p>
@@ -101,10 +100,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.68, duration: 0.7 }}
-            className="mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
+            className="hero-stats mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
           >
             {stats.map(item => (
-              <div key={item.labelKey}>
+              <div key={item.labelKey} className="min-w-0">
                 <div className="font-display text-3xl font-extrabold gradient-text">{item.value}</div>
                 <div className="mt-1 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-dim">{t(item.labelKey)}</div>
               </div>
@@ -116,25 +115,25 @@ export default function Hero() {
           initial={{ opacity: 0, x: 26 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.35, duration: 0.8 }}
-          className="relative min-w-0"
+          className="hero-console-wrap relative min-w-0"
         >
           <div className="absolute -inset-10 rounded-full bg-violet/20 blur-[120px]" />
           <GlareHover>
-            <SpotlightCard className="mx-auto max-w-[28rem] p-5 sm:p-6 lg:p-7">
+            <SpotlightCard className="hero-console-card mx-auto w-full max-w-[27rem] p-5 sm:p-6 lg:p-7">
               <div className="mb-5 flex items-center justify-between gap-4">
-                <div>
+                <div className="min-w-0">
                   <div className="font-mono text-xs uppercase tracking-[0.2em] text-dim">{t('hero.consoleTitle')}</div>
-                  <div className="mt-1 font-display text-2xl font-extrabold text-white">{profile.name}</div>
+                  <div className="mt-1 truncate font-display text-2xl font-extrabold text-white">{profile.name}</div>
                 </div>
-                <div className="rounded-full border border-mint/25 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">{t('common.live')}</div>
+                <div className="shrink-0 rounded-full border border-mint/25 bg-mint/10 px-3 py-1 font-mono text-xs text-mint">{t('common.live')}</div>
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-black/45 p-4 font-mono text-sm shadow-inner">
-                <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
-                  <div className="flex gap-2"><span className="h-3 w-3 rounded-full bg-rose" /><span className="h-3 w-3 rounded-full bg-yellow-400" /><span className="h-3 w-3 rounded-full bg-mint" /></div>
+                <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/10 pb-3">
+                  <div className="flex shrink-0 gap-2"><span className="h-3 w-3 rounded-full bg-rose" /><span className="h-3 w-3 rounded-full bg-yellow-400" /><span className="h-3 w-3 rounded-full bg-mint" /></div>
                   <span className="text-dim">developer.profile</span>
                 </div>
-                <pre className="whitespace-pre-wrap leading-7 text-muted">
+                <pre className="console-pre whitespace-pre-wrap leading-7 text-muted">
 <span className="text-mint">const</span> developer = {'{'}
   name: <span className="text-violet">'{profile.name}'</span>,
   role: <span className="text-aqua">'{profile.title}'</span>,

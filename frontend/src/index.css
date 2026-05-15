@@ -352,3 +352,464 @@ pre, code { white-space: pre-wrap; overflow-wrap: anywhere; }
   }
 }
 /* === END HERO TITLE FINAL FIX === */
+
+/* =========================================================
+   GLOBAL RESPONSIVE FIX — v8
+   Goal: no horizontal clipping, no hidden hero title,
+   clean layout on tablets and phones.
+   ========================================================= */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+#root > div {
+  width: 100%;
+  max-width: 100%;
+}
+
+section,
+header,
+footer,
+main,
+.container-pro {
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+.container-pro {
+  width: min(100%, 80rem);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
+}
+
+.glass-card,
+.safe-hover,
+.interactive-card,
+.contact-tile,
+.skill-chip,
+.rounded-2xl,
+.rounded-3xl,
+.hero-console-card,
+.hero-copy,
+.hero-console-wrap {
+  min-width: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+.section-title,
+.muted-text,
+.contact-tile,
+.skill-chip,
+.console-pre,
+pre,
+code {
+  overflow-wrap: anywhere;
+}
+
+/* Header / mobile nav */
+.site-header {
+  max-width: 100vw;
+}
+
+.site-brand {
+  white-space: nowrap;
+}
+
+.language-menu {
+  z-index: 70;
+}
+
+.mobile-menu-holder {
+  position: relative;
+  z-index: 65;
+}
+
+.mobile-menu-panel {
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+/* Hero: final robust layout */
+.hero-section {
+  overflow: visible;
+}
+
+.hero-grid-responsive {
+  overflow: visible;
+}
+
+.hero-copy {
+  max-width: 42rem;
+  overflow: visible;
+}
+
+.hero-title-safe {
+  width: 100%;
+  max-width: 100%;
+  overflow: visible !important;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.062em;
+  color: #fff;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+.hero-title-line {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-wrap: nowrap;
+  font-size: clamp(3rem, 5vw, 5.15rem);
+}
+
+.hero-title-line-gradient {
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 48%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-title-line-long {
+  font-size: clamp(2.35rem, 4.15vw, 4.05rem);
+  letter-spacing: -0.058em;
+}
+
+.hero-lead {
+  max-width: 39rem;
+}
+
+.hero-console-wrap {
+  width: 100%;
+}
+
+.hero-console-card {
+  width: min(100%, 27rem);
+}
+
+.console-pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* desktop tuning: keep hero title away from right card */
+@media (min-width: 1280px) {
+  .hero-grid-responsive {
+    grid-template-columns: minmax(0, 0.98fr) minmax(350px, 0.72fr) !important;
+  }
+
+  .hero-copy {
+    max-width: 41rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-copy {
+    max-width: 44rem;
+  }
+
+  .hero-title-line {
+    font-size: clamp(3.3rem, 5.05vw, 5.45rem);
+  }
+
+  .hero-title-line-long {
+    font-size: clamp(2.55rem, 4.2vw, 4.35rem);
+  }
+}
+
+/* Tablet: stack hero, center card, give sections breathing room */
+@media (max-width: 1279px) {
+  .hero-grid-responsive {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding-top: 1.5rem;
+  }
+
+  .hero-copy {
+    max-width: 47rem;
+  }
+
+  .hero-console-wrap {
+    margin-top: 1rem;
+  }
+
+  .hero-console-card {
+    margin-inline: 0;
+    max-width: 35rem;
+  }
+
+  .hero-title-line {
+    font-size: clamp(3.2rem, 8.4vw, 5.7rem);
+  }
+
+  .hero-title-line-long {
+    font-size: clamp(2.55rem, 6.85vw, 4.55rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  section {
+    padding-top: 5.5rem !important;
+    padding-bottom: 5.5rem !important;
+  }
+
+  .section-title {
+    font-size: clamp(2.25rem, 7vw, 4rem) !important;
+    line-height: 1.03;
+  }
+
+  .stack-lab {
+    min-height: 340px;
+  }
+}
+
+/* Phones */
+@media (max-width: 767px) {
+  .container-pro {
+    padding-inline: 1rem;
+  }
+
+  .site-header {
+    padding-block: 0.75rem !important;
+  }
+
+  .site-brand {
+    font-size: 1.12rem !important;
+  }
+
+  .language-toggle {
+    height: 2.5rem !important;
+    padding-inline: 0.65rem !important;
+  }
+
+  .language-menu {
+    position: fixed !important;
+    top: 4.25rem !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    max-height: calc(100vh - 5.25rem);
+    overflow-y: auto;
+  }
+
+  .mobile-menu-holder {
+    margin-top: 0.75rem !important;
+  }
+
+  .hero-section {
+    padding-top: 6.75rem !important;
+  }
+
+  .hero-badge {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.45;
+    letter-spacing: 0.12em !important;
+  }
+
+  .hero-eyebrow {
+    letter-spacing: 0.17em !important;
+  }
+
+  .hero-title-safe {
+    margin-top: 1rem !important;
+    line-height: 0.95;
+    letter-spacing: -0.052em;
+  }
+
+  .hero-title-line {
+    font-size: clamp(2.75rem, 14.2vw, 4.4rem) !important;
+  }
+
+  .hero-title-line-long {
+    font-size: clamp(2.1rem, 10.8vw, 3.35rem) !important;
+  }
+
+  .hero-lead {
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    min-height: 3rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1rem !important;
+  }
+
+  .hero-stats .font-display {
+    font-size: 2rem !important;
+  }
+
+  .hero-console-card {
+    max-width: 100%;
+    padding: 1rem !important;
+  }
+
+  .console-pre {
+    font-size: 0.76rem;
+    line-height: 1.8;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 10vw, 3.25rem) !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .section-kicker {
+    letter-spacing: 0.16em !important;
+  }
+
+  .input-pro {
+    font-size: 16px; /* prevents iOS zoom */
+  }
+
+  .rb-gradient {
+    filter: blur(70px);
+  }
+}
+
+@media (max-width: 520px) {
+  section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .hero-section {
+    padding-top: 6.25rem !important;
+  }
+
+  .hero-title-line {
+    font-size: clamp(2.35rem, 13.2vw, 3.55rem) !important;
+  }
+
+  .hero-title-line-long {
+    font-size: clamp(1.78rem, 10.1vw, 2.72rem) !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .hero-stats > div {
+    border-radius: 1rem;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.025);
+    padding: .85rem;
+  }
+
+  .rounded-\[2rem\] {
+    border-radius: 1.25rem !important;
+  }
+
+  .stack-lab {
+    min-height: auto !important;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .75rem;
+    place-items: stretch;
+    transform: none !important;
+  }
+
+  .stack-lab::before,
+  .stack-lab::after {
+    display: none;
+  }
+
+  .stack-core {
+    grid-column: 1 / -1;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto 0.25rem;
+    border-radius: 1.35rem;
+    font-size: 2rem;
+  }
+
+  .stack-chip {
+    position: static !important;
+    inset: auto !important;
+    width: 100%;
+    justify-content: center;
+    animation: none !important;
+    font-size: .66rem;
+    padding: .65rem .55rem;
+  }
+
+  .cf-turnstile {
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 390px) {
+  .container-pro {
+    padding-inline: .85rem;
+  }
+
+  .site-brand {
+    max-width: 9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-title-line {
+    font-size: clamp(2.05rem, 12.5vw, 2.9rem) !important;
+  }
+
+  .hero-title-line-long {
+    font-size: clamp(1.58rem, 9.7vw, 2.25rem) !important;
+    letter-spacing: -0.045em;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cf-turnstile {
+    transform: scale(.86);
+    transform-origin: left top;
+    min-height: 58px;
+  }
+}
+
+/* Make card grids and text safe on narrow screens */
+@media (max-width: 640px) {
+  .grid {
+    min-width: 0;
+  }
+
+  .font-mono {
+    overflow-wrap: anywhere;
+  }
+
+  .contact-tile .break-all,
+  a[href^="mailto:"],
+  a[href^="https://"] {
+    overflow-wrap: anywhere;
+  }
+}
