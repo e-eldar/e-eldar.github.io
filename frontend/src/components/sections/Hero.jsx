@@ -29,10 +29,11 @@ export default function Hero() {
   const titleLine2Parts = String(t('hero.line2') || '')
     .split(' ')
     .filter(Boolean);
+  const titleLine2Display = titleLine2Parts.join('-');
 
   return (
     <section className="relative z-10 overflow-hidden pt-32 sm:pt-36 lg:pt-40">
-      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1.12fr)_minmax(340px,.88fr)] lg:gap-16 xl:grid-cols-[minmax(0,1.18fr)_minmax(360px,.82fr)]">
+      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,.98fr)_minmax(360px,.9fr)] lg:gap-16 xl:grid-cols-[minmax(0,.92fr)_minmax(390px,.86fr)]">
         <div className="min-w-0 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -57,18 +58,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-[900px] break-normal font-display text-[clamp(3.05rem,7.15vw,6.25rem)] font-extrabold leading-[0.95] tracking-[-0.068em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(4rem,7.25vw,6.55rem)] lg:text-[clamp(4.4rem,6.6vw,6.65rem)]"
+            className="mt-5 max-w-[min(100%,720px)] break-normal font-display text-[clamp(3.15rem,8.8vw,4.8rem)] font-extrabold leading-[0.92] tracking-[-0.072em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(4rem,7vw,5.35rem)] lg:text-[clamp(3.85rem,5.05vw,4.75rem)] xl:text-[clamp(4.15rem,4.85vw,5.15rem)] 2xl:text-[5.7rem]"
           >
             {titleLine1Parts.map(part => (
               <span key={`line1-${part}`} className="block w-fit max-w-full whitespace-nowrap">
                 {part}
               </span>
             ))}
-            {titleLine2Parts.map(part => (
-              <span key={`line2-${part}`} className="block w-fit max-w-full whitespace-nowrap gradient-text">
-                {part}
-              </span>
-            ))}
+            <span className="block w-fit max-w-full whitespace-nowrap gradient-text text-[0.86em] tracking-[-0.078em] sm:text-[0.9em]">
+              {titleLine2Display}
+            </span>
           </motion.h1>
 
           <motion.div
