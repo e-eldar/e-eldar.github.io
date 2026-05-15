@@ -22,16 +22,13 @@ export default function Hero() {
     { icon: LockKeyhole, label: t('hero.cards.systems'), value: 'Auth + APIs' },
     { icon: Sparkles, label: t('hero.cards.ui'), value: 'React Bits' },
   ];
-
-  // Hero title is intentionally fixed to 2 clean lines.
-  // This keeps the profession readable and prevents ugly word breaking.
-  const titleLine1Display = 'Junior Full-Stack';
-  const titleLine2Display = 'Web-Developer';
+  // Hero title is locked to 3 clean lines so it never gets hidden by the card.
+  const heroTitleLines = ['Junior', 'Full-Stack', 'Web-Developer'];
 
   return (
-    <section className="relative z-10 overflow-x-clip pt-32 sm:pt-36 lg:pt-40">
-      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(330px,0.78fr)] lg:gap-14 xl:grid-cols-[minmax(0,0.98fr)_minmax(370px,0.74fr)]">
-        <div className="min-w-0 max-w-[44rem]">
+    <section className="relative z-10 overflow-visible pt-32 sm:pt-36 lg:pt-40">
+      <div className="container-pro hero-layout-grid grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.68fr)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(360px,0.66fr)]">
+        <div className="min-w-0 max-w-[40rem] overflow-visible">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,14 +52,16 @@ export default function Hero() {
             initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 w-full max-w-[44rem] break-normal font-display text-[clamp(2.45rem,10vw,3.8rem)] font-extrabold leading-[0.94] tracking-[-0.05em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(3.1rem,6.4vw,4.3rem)] lg:text-[clamp(3.35rem,3.65vw,4.05rem)] xl:text-[4.15rem] 2xl:text-[4.25rem]"
+            className="hero-title-safe mt-5"
           >
-            <span className="block whitespace-nowrap max-[560px]:whitespace-normal">
-              {titleLine1Display}
-            </span>
-            <span className="mt-1 block whitespace-nowrap gradient-text text-[0.92em] tracking-[-0.04em] max-[560px]:whitespace-normal">
-              {titleLine2Display}
-            </span>
+            {heroTitleLines.map((line, index) => (
+              <span
+                key={line}
+                className={index === 2 ? 'hero-title-line hero-title-line-gradient' : 'hero-title-line'}
+              >
+                {line}
+              </span>
+            ))}
           </motion.h1>
 
           <motion.div
@@ -121,7 +120,7 @@ export default function Hero() {
         >
           <div className="absolute -inset-10 rounded-full bg-violet/20 blur-[120px]" />
           <GlareHover>
-            <SpotlightCard className="mx-auto max-w-[29.5rem] p-5 sm:p-6 lg:p-7">
+            <SpotlightCard className="mx-auto max-w-[28rem] p-5 sm:p-6 lg:p-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div>
                   <div className="font-mono text-xs uppercase tracking-[0.2em] text-dim">{t('hero.consoleTitle')}</div>

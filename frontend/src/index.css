@@ -280,3 +280,75 @@ pre, code { white-space: pre-wrap; overflow-wrap: anywhere; }
   .stack-lab { min-height: 320px; transform: scale(.92); }
   .stack-chip { font-size: .62rem; padding: .5rem .62rem; }
 }
+
+/* === HERO TITLE FINAL FIX ===
+   Keeps the hero title readable on desktop/tablet/mobile.
+   Required layout:
+   Junior
+   Full-Stack
+   Web-Developer
+*/
+.hero-layout-grid {
+  overflow: visible;
+}
+
+.hero-title-safe {
+  max-width: min(100%, 38rem);
+  overflow: visible;
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3.25rem, 5.2vw, 4.35rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  color: #ffffff;
+  word-break: normal;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.hero-title-line {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  overflow: visible;
+}
+
+.hero-title-line-gradient {
+  margin-top: 0.08em;
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 48%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 1280px) {
+  .hero-title-safe {
+    max-width: 34rem;
+    font-size: clamp(3rem, 4.55vw, 3.95rem);
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-title-safe {
+    max-width: 100%;
+    font-size: clamp(3.3rem, 10vw, 5.25rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-title-safe {
+    font-size: clamp(2.35rem, 11.5vw, 3.45rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero-title-safe {
+    font-size: clamp(2.05rem, 10.6vw, 2.65rem);
+  }
+}
+/* === END HERO TITLE FINAL FIX === */
