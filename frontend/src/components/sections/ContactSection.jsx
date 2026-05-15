@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Github, Linkedin, Mail, MapPin, MessageSquareText, Send, ShieldCheck, Sparkles, TerminalSquare, Zap } from 'lucide-react';
 import { profile } from '../../data/profile.js';
 import { useLanguage } from '../../context/LanguageContext.jsx';
-import { api } from '../../api/client.js';
+import { CONTACT_API_URL, TURNSTILE_SITE_KEY } from '../../config.js';
 import SpotlightCard from '../reactbits/SpotlightCard.jsx';
 import AnimatedContent from '../reactbits/AnimatedContent.jsx';
 import ShinyText from '../reactbits/ShinyText.jsx';
@@ -10,26 +10,96 @@ import TextType from '../reactbits/TextType.jsx';
 import GlareHover from '../reactbits/GlareHover.jsx';
 import MagneticButton from '../reactbits/MagneticButton.jsx';
 
-const initial = { name: '', email: '', subject: '', message: '' };
+const initial = { name: '', email: '', subject: '', message: '', company: '' };
 
 export default function ContactSection() {
   const { t } = useLanguage();
   const [form, setForm] = useState(initial);
   const [status, setStatus] = useState({ type: '', message: '' });
   const [loading, setLoading] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const turnstileRef = useRef(null);
+  const turnstileWidgetId = useRef(null);
 
   const change = event => setForm(prev => ({ ...prev, [event.target.name]: event.target.value }));
 
+  useEffect(() => {
+    let cancelled = false;
+    let timer;
+
+    const renderTurnstile = () => {
+      if (cancelled || !turnstileRef.current || !window.turnstile || turnstileWidgetId.current !== null) return;
+
+      turnstileWidgetId.current = window.turnstile.render(turnstileRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: 'dark',
+        size: 'normal',
+        callback: token => setTurnstileToken(token),
+        'expired-callback': () => setTurnstileToken(''),
+        'error-callback': () => setTurnstileToken(''),
+      });
+    };
+
+    renderTurnstile();
+
+    if (!window.turnstile) {
+      timer = window.setInterval(renderTurnstile, 300);
+    }
+
+    return () => {
+      cancelled = true;
+      if (timer) window.clearInterval(timer);
+
+      if (window.turnstile && turnstileWidgetId.current !== null) {
+        window.turnstile.remove(turnstileWidgetId.current);
+        turnstileWidgetId.current = null;
+      }
+    };
+  }, []);
+
+  const resetTurnstile = () => {
+    setTurnstileToken('');
+    if (window.turnstile && turnstileWidgetId.current !== null) {
+      window.turnstile.reset(turnstileWidgetId.current);
+    }
+  };
+
   const submit = async event => {
     event.preventDefault();
-    setLoading(true);
     setStatus({ type: '', message: '' });
+
+    if (!turnstileToken) {
+      setStatus({
+        type: 'error',
+        message: 'Please complete the security verification before sending.',
+      });
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      await api.sendMessage(form);
+      const response = await fetch(CONTACT_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...form,
+          turnstileToken,
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.message || t('contact.error'));
+      }
+
       setForm(initial);
       setStatus({ type: 'success', message: t('contact.success') });
+      resetTurnstile();
     } catch (error) {
       setStatus({ type: 'error', message: error.message || t('contact.error') });
+      resetTurnstile();
     } finally {
       setLoading(false);
     }
@@ -124,11 +194,30 @@ export default function ContactSection() {
                   <label className="block"><span className="mb-2 block font-mono text-[0.68rem] uppercase tracking-[0.18em] text-dim">{t('contact.subject')}</span><input className="input-pro" name="subject" value={form.subject} onChange={change} placeholder="Internship / project / collaboration" required minLength={2} /></label>
                   <label className="block"><span className="mb-2 block font-mono text-[0.68rem] uppercase tracking-[0.18em] text-dim">{t('contact.message')}</span><textarea className="input-pro min-h-44 resize-y" name="message" value={form.message} onChange={change} placeholder="Write a short message..." required minLength={10} /></label>
 
+                  <input
+                    className="hidden"
+                    type="text"
+                    name="company"
+                    value={form.company}
+                    onChange={change}
+                    tabIndex="-1"
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+
+                  <div className="rounded-2xl border border-white/10 bg-black/25 p-4">
+                    <div className="mb-3 flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-dim">
+                      <ShieldCheck size={15} className="text-mint" />
+                      Security verification
+                    </div>
+                    <div ref={turnstileRef} className="min-h-[65px]" />
+                  </div>
+
                   {status.message && (
                     <div className={`rounded-2xl border px-4 py-3 text-sm ${status.type === 'success' ? 'border-mint/30 bg-mint/10 text-mint' : 'border-rose/30 bg-rose/10 text-rose'}`}>{status.message}</div>
                   )}
 
-                  <MagneticButton disabled={loading} className="btn-primary w-full" type="submit">
+                  <MagneticButton disabled={loading || !turnstileToken} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60" type="submit">
                     {loading ? t('contact.sending') : t('contact.button')} <Send size={17} />
                   </MagneticButton>
                 </form>
