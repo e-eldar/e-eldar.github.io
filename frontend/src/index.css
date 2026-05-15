@@ -1293,623 +1293,157 @@ li,
   overflow-wrap: anywhere;
 }
 
-
 /* =========================================================
-   HERO + GLOBAL RESPONSIVE FINAL OVERRIDE
-   This block intentionally comes LAST to override older rules.
-   Goal: the hero title is always visible as exactly:
-   Junior / Full-Stack / Web-Developer
+   HERO TITLE SAFE FIX — final surgical override
+   Keeps the original look, but prevents overlap/clipping.
+   Required visual:
+   Junior
+   Full-Stack
+   Web-Developer
    ========================================================= */
-html,
-body,
-#root {
-  width: 100%;
-  max-width: 100%;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-.container-pro {
-  width: min(100% - 2rem, 1280px) !important;
-  max-width: 1280px !important;
-  margin-inline: auto !important;
-  padding-inline: 0 !important;
-}
-
 .hero-section {
-  width: 100% !important;
-  overflow: visible !important;
-  padding-top: clamp(5.5rem, 8vw, 8.5rem) !important;
-}
-
-.hero-section * {
-  min-width: 0;
+  overflow: hidden !important;
 }
 
 .hero-grid-responsive {
   display: grid !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  align-items: center !important;
   justify-content: center !important;
-  gap: clamp(2rem, 5vw, 4.5rem) !important;
+  align-items: center !important;
   overflow: visible !important;
 }
 
 .hero-copy {
-  width: 100% !important;
-  max-width: 48rem !important;
+  container-type: inline-size;
   min-width: 0 !important;
   overflow: visible !important;
-  justify-self: center !important;
 }
 
 .hero-title-safe {
+  display: block !important;
   width: 100% !important;
   max-width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.03em !important;
-  overflow: visible !important;
+  margin-top: 1.35rem !important;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
   line-height: 0.92 !important;
   letter-spacing: -0.055em !important;
-  font-family: 'Syne', sans-serif !important;
+  color: #fff !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
 }
 
-.hero-title-line,
-.hero-title-line-junior,
-.hero-title-line-stack,
-.hero-title-line-web,
-.hero-title-line-gradient {
+.hero-title-line {
   display: block !important;
-  max-width: none !important;
-  width: max-content !important;
+  width: 100% !important;
+  max-width: 100% !important;
   min-width: 0 !important;
   white-space: nowrap !important;
   overflow: visible !important;
-  text-overflow: clip !important;
-  line-height: 0.92 !important;
-  font-weight: 800 !important;
+  text-wrap: nowrap !important;
 }
 
 .hero-title-line-junior {
-  color: #fff !important;
-  font-size: clamp(3.8rem, 6vw, 6.5rem) !important;
+  font-size: clamp(3.25rem, 12cqw, 5.1rem) !important;
 }
 
 .hero-title-line-stack {
-  color: #fff !important;
-  font-size: clamp(3.25rem, 5.25vw, 5.75rem) !important;
+  font-size: clamp(2.85rem, 10.8cqw, 4.55rem) !important;
 }
 
 .hero-title-line-web {
-  font-size: clamp(2.75rem, 3.85vw, 4.45rem) !important;
-  letter-spacing: -0.045em !important;
+  margin-top: 0.08em !important;
+  font-size: clamp(2.05rem, 7.55cqw, 3rem) !important;
+  letter-spacing: -0.04em !important;
 }
 
 .hero-title-line-gradient {
-  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #a78bfa 100%) !important;
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #c4b5fd 100%) !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
   color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
 }
 
-.hero-type-row,
-.hero-lead,
-.hero-actions,
-.hero-stats {
-  max-width: 100% !important;
-}
-
-.hero-lead {
-  max-width: 42rem !important;
-}
-
-.hero-console-wrap {
-  width: 100% !important;
-  max-width: 31rem !important;
-  justify-self: center !important;
-}
-
-.hero-console-card {
-  width: 100% !important;
-  max-width: 31rem !important;
-}
-
-.console-pre {
-  white-space: pre-wrap !important;
-  overflow-wrap: anywhere !important;
-  word-break: normal !important;
-}
-
-@media (min-width: 1180px) {
+/* Full desktop: keep two columns, but reserve clear space between title and card. */
+@media (min-width: 1280px) {
   .hero-grid-responsive {
-    grid-template-columns: minmax(0, 44rem) minmax(24rem, 31rem) !important;
-    column-gap: clamp(3rem, 5.5vw, 6rem) !important;
+    grid-template-columns: minmax(0, 620px) minmax(360px, 430px) !important;
+    gap: clamp(4rem, 6vw, 7rem) !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe,
+  .hero-lead {
+    max-width: 620px !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 430px !important;
+    width: 100% !important;
+    justify-self: center !important;
+  }
+}
+
+/* Small laptops: stack earlier so the card never covers the title. */
+@media (max-width: 1279px) {
+  .hero-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+    align-items: start !important;
   }
 
   .hero-copy {
-    justify-self: end !important;
+    max-width: 720px !important;
+    width: 100% !important;
   }
 
-  .hero-console-wrap {
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 560px !important;
+    width: 100% !important;
     justify-self: start !important;
   }
 }
 
-@media (max-width: 1179px) {
-  .hero-copy {
-    text-align: left !important;
-  }
-
-  .hero-console-wrap {
-    margin-top: 1rem !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .container-pro {
-    width: min(100% - 1.5rem, 1280px) !important;
-  }
-
+/* Tablets and phones: make all three title lines responsive to the actual column width. */
+@media (max-width: 720px) {
   .hero-section {
-    padding-top: 5.8rem !important;
-  }
-
-  .hero-grid-responsive {
-    gap: 2rem !important;
-    padding-bottom: 2.5rem !important;
-  }
-
-  .hero-badge {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-    padding: 0.62rem 0.85rem !important;
-    font-size: 0.62rem !important;
-    letter-spacing: 0.105em !important;
-    line-height: 1.45 !important;
-  }
-
-  .hero-eyebrow {
-    font-size: 0.68rem !important;
-    letter-spacing: 0.14em !important;
+    padding-top: 6.25rem !important;
   }
 
   .hero-title-safe {
     margin-top: 1.15rem !important;
-    gap: 0.06em !important;
-    letter-spacing: -0.04em !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.045em !important;
   }
 
   .hero-title-line-junior {
-    font-size: clamp(2.85rem, 12.2vw, 4.1rem) !important;
+    font-size: clamp(2.85rem, 15cqw, 4.4rem) !important;
   }
 
   .hero-title-line-stack {
-    font-size: clamp(2.35rem, 9.8vw, 3.35rem) !important;
+    font-size: clamp(2.4rem, 12.4cqw, 3.75rem) !important;
   }
 
   .hero-title-line-web {
-    font-size: clamp(1.82rem, 7.4vw, 2.55rem) !important;
-    letter-spacing: -0.03em !important;
-  }
-
-  .hero-type-row {
-    margin-top: 1.25rem !important;
-    font-size: 0.82rem !important;
-  }
-
-  .hero-lead {
-    margin-top: 1.35rem !important;
-    font-size: 1rem !important;
-    line-height: 1.72 !important;
-  }
-
-  .hero-actions {
-    width: 100% !important;
-    margin-top: 1.65rem !important;
-  }
-
-  .btn-primary,
-  .btn-ghost {
-    width: 100% !important;
-    min-height: 3.1rem !important;
-  }
-
-  .hero-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.85rem !important;
-    margin-top: 2rem !important;
-  }
-
-  .hero-stats > div {
-    border: 1px solid rgba(255,255,255,.08) !important;
-    border-radius: 1rem !important;
-    background: rgba(255,255,255,.025) !important;
-    padding: 0.85rem !important;
-  }
-
-  .hero-stats .font-display {
-    font-size: 1.85rem !important;
-  }
-
-  .hero-stats .font-mono {
-    font-size: 0.58rem !important;
-    letter-spacing: 0.12em !important;
-  }
-
-  .hero-console-card {
-    padding: 1rem !important;
-    border-radius: 1.35rem !important;
-  }
-
-  .console-pre {
-    font-size: 0.72rem !important;
-    line-height: 1.72 !important;
+    font-size: clamp(1.82rem, 8.7cqw, 2.6rem) !important;
   }
 }
 
-@media (max-width: 430px) {
-  .container-pro {
-    width: min(100% - 1.25rem, 1280px) !important;
-  }
-
+@media (max-width: 420px) {
   .hero-title-line-junior {
-    font-size: clamp(2.45rem, 11.7vw, 3.2rem) !important;
+    font-size: clamp(2.5rem, 14.8cqw, 3.35rem) !important;
   }
 
   .hero-title-line-stack {
-    font-size: clamp(2rem, 9.2vw, 2.65rem) !important;
+    font-size: clamp(2.08rem, 11.9cqw, 2.85rem) !important;
   }
 
   .hero-title-line-web {
-    font-size: clamp(1.52rem, 7.05vw, 2rem) !important;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr !important;
-  }
-
-  .hero-console-card .grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .cf-turnstile {
-    transform: scale(0.86) !important;
-    transform-origin: left top !important;
-    min-height: 58px !important;
+    font-size: clamp(1.58rem, 8.15cqw, 2.1rem) !important;
   }
 }
-
-@media (max-width: 360px) {
-  .hero-title-line-junior { font-size: 2.35rem !important; }
-  .hero-title-line-stack { font-size: 1.9rem !important; }
-  .hero-title-line-web { font-size: 1.43rem !important; }
-}
-
-/* Wider responsive safety for the rest of the website */
-@media (max-width: 980px) {
-  .grid[class*="lg:grid-cols"],
-  .grid[class*="xl:grid-cols"] {
-    grid-template-columns: 1fr !important;
-  }
-
-  .glass-card,
-  .interactive-card,
-  .contact-tile,
-  .skill-chip,
-  .rounded-2xl,
-  .rounded-3xl,
-  .rounded-\[2rem\] {
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  .stack-lab {
-    min-height: auto !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.75rem !important;
-    place-items: stretch !important;
-    transform: none !important;
-  }
-
-  .stack-lab::before,
-  .stack-lab::after {
-    display: none !important;
-  }
-
-  .stack-core {
-    grid-column: 1 / -1 !important;
-    width: 5.25rem !important;
-    height: 5.25rem !important;
-    margin: 0 auto 0.35rem !important;
-    border-radius: 1.2rem !important;
-    font-size: 2rem !important;
-  }
-
-  .stack-chip {
-    position: static !important;
-    inset: auto !important;
-    width: 100% !important;
-    justify-content: center !important;
-    animation: none !important;
-    font-size: 0.62rem !important;
-    padding: 0.65rem 0.5rem !important;
-  }
-}
-
-/* =========================================================
-   ABSOLUTE FINAL HERO FIX — NO OVERLAP, NO CUT TEXT
-   Uses new unique classes from Hero.no-overlap-final.jsx.
-   This block must stay at the very end of index.css.
-   ========================================================= */
-.hero-final-section,
-.hero-final-section * {
-  box-sizing: border-box !important;
-  min-width: 0 !important;
-}
-
-.hero-final-section {
-  width: 100% !important;
-  overflow: visible !important;
-  padding-top: clamp(6rem, 8vw, 9rem) !important;
-}
-
-.hero-final-grid {
-  width: min(100% - 2rem, 1180px) !important;
-  max-width: 1180px !important;
-  margin-inline: auto !important;
-  padding-inline: 0 !important;
-  display: grid !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: clamp(2.25rem, 5vw, 5rem) !important;
-  grid-template-columns: minmax(0, 1fr) !important;
-  overflow: visible !important;
-}
-
-.hero-final-copy {
-  width: 100% !important;
-  max-width: 40rem !important;
-  justify-self: center !important;
-  overflow: visible !important;
-}
-
-.hero-final-console-wrap {
-  width: 100% !important;
-  max-width: 30rem !important;
-  justify-self: center !important;
-  overflow: visible !important;
-}
-
-.hero-final-console-card {
-  width: 100% !important;
-  max-width: 30rem !important;
-}
-
-.hero-final-title {
-  width: 100% !important;
-  max-width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.04em !important;
-  margin-top: 1.25rem !important;
-  overflow: visible !important;
-  font-family: 'Syne', sans-serif !important;
-  line-height: 0.93 !important;
-  letter-spacing: -0.055em !important;
-}
-
-.hero-final-title-line {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-overflow: clip !important;
-  font-weight: 800 !important;
-  line-height: 0.93 !important;
-  transform: none !important;
-}
-
-.hero-final-title-junior,
-.hero-final-title-stack {
-  color: #fff !important;
-}
-
-.hero-final-title-junior {
-  font-size: clamp(4.2rem, 5.2vw, 6.1rem) !important;
-}
-
-.hero-final-title-stack {
-  font-size: clamp(3.55rem, 4.45vw, 5.25rem) !important;
-}
-
-.hero-final-title-web {
-  font-size: clamp(2.45rem, 3.05vw, 3.55rem) !important;
-  letter-spacing: -0.035em !important;
-  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #a78bfa 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  color: transparent !important;
-}
-
-.hero-final-lead,
-.hero-final-type,
-.hero-final-actions,
-.hero-final-stats {
-  max-width: 100% !important;
-}
-
-.hero-final-lead {
-  max-width: 39rem !important;
-}
-
-@media (min-width: 1320px) {
-  .hero-final-grid {
-    grid-template-columns: minmax(0, 40rem) minmax(0, 30rem) !important;
-    column-gap: clamp(4rem, 6vw, 6rem) !important;
-  }
-
-  .hero-final-copy {
-    justify-self: end !important;
-  }
-
-  .hero-final-console-wrap {
-    justify-self: start !important;
-  }
-}
-
-@media (min-width: 1180px) and (max-width: 1319px) {
-  .hero-final-grid {
-    grid-template-columns: minmax(0, 36rem) minmax(0, 28rem) !important;
-    column-gap: 3.25rem !important;
-    max-width: 1080px !important;
-  }
-
-  .hero-final-copy {
-    max-width: 36rem !important;
-    justify-self: end !important;
-  }
-
-  .hero-final-console-wrap {
-    max-width: 28rem !important;
-    justify-self: start !important;
-  }
-
-  .hero-final-console-card {
-    max-width: 28rem !important;
-  }
-
-  .hero-final-title-junior {
-    font-size: clamp(3.7rem, 4.7vw, 5.1rem) !important;
-  }
-
-  .hero-final-title-stack {
-    font-size: clamp(3.1rem, 4vw, 4.45rem) !important;
-  }
-
-  .hero-final-title-web {
-    font-size: clamp(2.15rem, 2.65vw, 3rem) !important;
-  }
-}
-
-@media (max-width: 1179px) {
-  .hero-final-grid {
-    grid-template-columns: 1fr !important;
-    max-width: 760px !important;
-  }
-
-  .hero-final-copy,
-  .hero-final-console-wrap {
-    max-width: 100% !important;
-    justify-self: stretch !important;
-  }
-
-  .hero-final-console-card {
-    max-width: 100% !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-final-grid {
-    width: min(100% - 1.5rem, 760px) !important;
-    gap: 2rem !important;
-    padding-bottom: 3rem !important;
-  }
-
-  .hero-final-badge {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-    font-size: 0.62rem !important;
-    line-height: 1.45 !important;
-    letter-spacing: 0.11em !important;
-  }
-
-  .hero-final-eyebrow {
-    font-size: 0.68rem !important;
-    line-height: 1.5 !important;
-    letter-spacing: 0.14em !important;
-  }
-
-  .hero-final-title {
-    gap: 0.08em !important;
-    letter-spacing: -0.04em !important;
-  }
-
-  .hero-final-title-junior {
-    font-size: clamp(3.15rem, 13.2vw, 4.35rem) !important;
-  }
-
-  .hero-final-title-stack {
-    font-size: clamp(2.55rem, 10.7vw, 3.55rem) !important;
-  }
-
-  .hero-final-title-web {
-    font-size: clamp(1.78rem, 7.45vw, 2.48rem) !important;
-    letter-spacing: -0.025em !important;
-  }
-
-  .hero-final-lead {
-    font-size: 1rem !important;
-    line-height: 1.72 !important;
-  }
-
-  .hero-final-actions {
-    width: 100% !important;
-  }
-
-  .hero-final-actions .btn-primary,
-  .hero-final-actions .btn-ghost {
-    width: 100% !important;
-    min-height: 3.1rem !important;
-  }
-
-  .hero-final-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.85rem !important;
-  }
-
-  .hero-final-stats > div {
-    border: 1px solid rgba(255,255,255,.08) !important;
-    border-radius: 1rem !important;
-    background: rgba(255,255,255,.025) !important;
-    padding: 0.85rem !important;
-  }
-}
-
-@media (max-width: 430px) {
-  .hero-final-grid {
-    width: min(100% - 1.1rem, 760px) !important;
-  }
-
-  .hero-final-title-junior {
-    font-size: clamp(2.65rem, 12.8vw, 3.35rem) !important;
-  }
-
-  .hero-final-title-stack {
-    font-size: clamp(2.13rem, 10.35vw, 2.75rem) !important;
-  }
-
-  .hero-final-title-web {
-    font-size: clamp(1.48rem, 7.25vw, 1.92rem) !important;
-  }
-
-  .hero-final-stats {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .hero-final-title-junior { font-size: 2.38rem !important; }
-  .hero-final-title-stack { font-size: 1.92rem !important; }
-  .hero-final-title-web { font-size: 1.34rem !important; }
-}
+/* === END HERO TITLE SAFE FIX === */
