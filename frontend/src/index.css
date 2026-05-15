@@ -813,3 +813,482 @@ code {
     overflow-wrap: anywhere;
   }
 }
+
+/* =========================================================
+   V9 FINAL RESPONSIVE PASS
+   This block intentionally overrides older hero/layout rules.
+   Goal: readable hero title + clean layout on every width.
+   ========================================================= */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+#root > div {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.container-pro {
+  width: min(100% - clamp(2rem, 5vw, 4rem), 1280px) !important;
+  max-width: 1280px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+section {
+  max-width: 100%;
+}
+
+img,
+svg,
+canvas,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* Header */
+.site-header .container-pro {
+  width: min(100% - clamp(1.5rem, 4vw, 4rem), 1280px) !important;
+}
+
+.language-menu {
+  z-index: 90 !important;
+}
+
+.mobile-menu-panel {
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+}
+
+/* Hero desktop/tablet layout */
+.hero-section {
+  min-height: auto !important;
+  overflow: hidden !important;
+}
+
+.hero-grid-responsive {
+  min-height: calc(100vh - 4.5rem) !important;
+  grid-template-columns: minmax(0, 650px) minmax(360px, 430px) !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: clamp(3rem, 6vw, 6.5rem) !important;
+  overflow: visible !important;
+}
+
+.hero-copy {
+  width: 100% !important;
+  max-width: 650px !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+
+.hero-console-wrap {
+  width: 100% !important;
+  max-width: 430px !important;
+  min-width: 0 !important;
+  justify-self: center !important;
+}
+
+.hero-console-card {
+  width: 100% !important;
+  max-width: 430px !important;
+  min-width: 0 !important;
+}
+
+/* The important part: title lines must not be clipped by parent width or background-clip. */
+.hero-title-safe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  margin-top: 1.1rem !important;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.055em !important;
+  color: #fff !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+.hero-title-line {
+  display: block !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-wrap: nowrap !important;
+}
+
+.hero-title-line-junior {
+  font-size: clamp(3.8rem, 5.05vw, 5.05rem) !important;
+}
+
+.hero-title-line-stack {
+  font-size: clamp(3.45rem, 4.65vw, 4.65rem) !important;
+}
+
+.hero-title-line-web {
+  margin-top: 0.06em !important;
+  font-size: clamp(2.65rem, 3.45vw, 3.45rem) !important;
+  letter-spacing: -0.045em !important;
+}
+
+.hero-title-line-gradient {
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #c4b5fd 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.hero-lead {
+  max-width: 620px !important;
+}
+
+.console-pre {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  font-size: clamp(0.72rem, 0.95vw, 0.88rem) !important;
+}
+
+/* Large desktop: a little bigger but still safe */
+@media (min-width: 1536px) {
+  .hero-grid-responsive {
+    grid-template-columns: minmax(0, 690px) minmax(380px, 450px) !important;
+    gap: 6.5rem !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: 690px !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 450px !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: 5.25rem !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: 4.85rem !important;
+  }
+
+  .hero-title-line-web {
+    font-size: 3.65rem !important;
+  }
+}
+
+/* Laptops / small desktop: keep two columns, reduce title safely */
+@media (max-width: 1320px) and (min-width: 1101px) {
+  .hero-grid-responsive {
+    grid-template-columns: minmax(0, 580px) minmax(340px, 400px) !important;
+    gap: 3.75rem !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: 580px !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 400px !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: 4.3rem !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: 3.95rem !important;
+  }
+
+  .hero-title-line-web {
+    font-size: 2.95rem !important;
+  }
+}
+
+/* Tablet: one column, centered card, readable title */
+@media (max-width: 1100px) {
+  .hero-section {
+    padding-top: 7.25rem !important;
+  }
+
+  .hero-grid-responsive {
+    min-height: auto !important;
+    grid-template-columns: 1fr !important;
+    justify-content: stretch !important;
+    gap: 3rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  .hero-copy {
+    max-width: 760px !important;
+  }
+
+  .hero-title-safe {
+    max-width: 760px !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(4rem, 10vw, 5.8rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(3.55rem, 8.8vw, 5.1rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(2.8rem, 6.7vw, 3.9rem) !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 560px !important;
+    justify-self: start !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 720px) {
+  .container-pro,
+  .site-header .container-pro {
+    width: min(100% - 2rem, 1280px) !important;
+  }
+
+  section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .hero-section {
+    padding-top: 6.3rem !important;
+  }
+
+  .hero-grid-responsive {
+    gap: 2.2rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .hero-badge {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 0.55rem !important;
+    padding-inline: 0.8rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.105em !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-eyebrow,
+  .section-kicker {
+    letter-spacing: 0.14em !important;
+    font-size: 0.68rem !important;
+  }
+
+  .hero-title-safe {
+    max-width: 100% !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(3rem, 16vw, 4.8rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2.55rem, 13.2vw, 3.95rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(2.05rem, 9.6vw, 2.9rem) !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .hero-type-row {
+    font-size: 0.82rem !important;
+  }
+
+  .hero-lead,
+  .muted-text,
+  .section-title + p,
+  .contact-tile,
+  p {
+    font-size: 1rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: 100% !important;
+    min-height: 3rem !important;
+    text-align: center !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.85rem !important;
+  }
+
+  .hero-stats > div {
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 1rem;
+    background: rgba(255,255,255,.025);
+    padding: 0.85rem;
+  }
+
+  .hero-stats .font-display {
+    font-size: 1.85rem !important;
+  }
+
+  .hero-stats .font-mono {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hero-console-card {
+    padding: 1rem !important;
+    border-radius: 1.35rem !important;
+  }
+
+  .console-pre {
+    font-size: 0.7rem !important;
+    line-height: 1.75 !important;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 10vw, 3.15rem) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .grid,
+  .sm\:grid-cols-2,
+  .md\:grid-cols-2,
+  .lg\:grid-cols-2,
+  .lg\:grid-cols-3 {
+    min-width: 0 !important;
+  }
+
+  .glass-card,
+  .interactive-card,
+  .contact-tile,
+  .skill-chip,
+  .rounded-2xl,
+  .rounded-3xl,
+  .rounded-\[2rem\] {
+    min-width: 0 !important;
+  }
+
+  .stack-lab {
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    place-items: stretch !important;
+    transform: none !important;
+  }
+
+  .stack-lab::before,
+  .stack-lab::after {
+    display: none !important;
+  }
+
+  .stack-core {
+    grid-column: 1 / -1 !important;
+    width: 5.25rem !important;
+    height: 5.25rem !important;
+    margin: 0 auto 0.35rem !important;
+    border-radius: 1.2rem !important;
+    font-size: 2rem !important;
+  }
+
+  .stack-chip {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    justify-content: center !important;
+    animation: none !important;
+    font-size: 0.62rem !important;
+    padding: 0.65rem 0.5rem !important;
+  }
+
+  .cf-turnstile {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 420px) {
+  .container-pro,
+  .site-header .container-pro {
+    width: min(100% - 1.55rem, 1280px) !important;
+  }
+
+  .site-brand {
+    max-width: 8.5rem !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.55rem, 15vw, 3.4rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2.15rem, 12.3vw, 2.85rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.68rem, 8.9vw, 2.1rem) !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cf-turnstile {
+    transform: scale(0.86) !important;
+    transform-origin: left top !important;
+    min-height: 58px !important;
+  }
+}
+
+/* Prevent long text/links from breaking layouts outside the hero */
+pre,
+code,
+.console-pre,
+.font-mono,
+a,
+p,
+li,
+.contact-tile,
+.skill-chip {
+  overflow-wrap: anywhere;
+}

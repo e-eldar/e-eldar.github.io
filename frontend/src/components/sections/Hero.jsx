@@ -11,7 +11,6 @@ import GlareHover from '../reactbits/GlareHover.jsx';
 import ScrollVelocity from '../reactbits/ScrollVelocity.jsx';
 
 const techRail = ['React', 'Vite', 'Tailwind', 'React Bits', 'Node.js', 'Express', 'SQLite', 'Auth', 'REST APIs', 'Responsive UI'];
-const heroTitleLines = ['Junior', 'Full-Stack', 'Web-Developer'];
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -26,7 +25,7 @@ export default function Hero() {
 
   return (
     <section className="hero-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
-      <div className="container-pro hero-grid-responsive grid min-h-[calc(100vh-5rem)] min-w-0 items-center gap-10 pb-12 md:pb-16 xl:grid-cols-[minmax(0,0.98fr)_minmax(360px,0.72fr)] xl:gap-14">
+      <div className="container-pro hero-grid-responsive grid min-w-0 items-center gap-10 pb-14 md:pb-16 xl:gap-16">
         <div className="hero-copy min-w-0 overflow-visible">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -39,54 +38,50 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.12, duration: 0.8 }}
+            transition={{ delay: 0.1, duration: 0.7 }}
             className="hero-eyebrow mt-6 font-mono text-xs uppercase tracking-[0.24em] text-dim"
           >
             {t('hero.eyebrow')}
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
+            initial={{ opacity: 0, y: 26, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ delay: 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.16, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="hero-title-safe mt-5"
+            aria-label="Junior Full-Stack Web-Developer"
           >
-            {heroTitleLines.map((line, index) => (
-              <span
-                key={line}
-                className={index === 2 ? 'hero-title-line hero-title-line-gradient hero-title-line-long' : 'hero-title-line'}
-              >
-                {line}
-              </span>
-            ))}
+            <span className="hero-title-line hero-title-line-junior">Junior</span>
+            <span className="hero-title-line hero-title-line-stack">Full-Stack</span>
+            <span className="hero-title-line hero-title-line-gradient hero-title-line-web">Web-Developer</span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.34, duration: 0.7 }}
-            className="mt-5 flex min-h-[2rem] flex-wrap items-center gap-3 font-mono text-sm text-muted"
+            transition={{ delay: 0.32, duration: 0.7 }}
+            className="hero-type-row mt-5 flex min-h-[2rem] flex-wrap items-center gap-3 font-mono text-sm text-muted"
           >
             <span className="text-dim">builds:</span>
             <TextType words={typedWords} className="text-aqua" />
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.44, duration: 0.75 }}
+            transition={{ delay: 0.42, duration: 0.75 }}
             className="hero-lead mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg lg:text-xl"
           >
             {t('hero.lead')}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.56, duration: 0.7 }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row"
+            transition={{ delay: 0.54, duration: 0.7 }}
+            className="hero-actions mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <MagneticButton to="/projects" className="btn-primary">
               {t('hero.primary')} <ArrowRight size={18} />
@@ -97,9 +92,9 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.68, duration: 0.7 }}
+            transition={{ delay: 0.64, duration: 0.7 }}
             className="hero-stats mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
           >
             {stats.map(item => (
@@ -112,14 +107,14 @@ export default function Hero() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, x: 26 }}
+          initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.35, duration: 0.8 }}
+          transition={{ delay: 0.32, duration: 0.8 }}
           className="hero-console-wrap relative min-w-0"
         >
-          <div className="absolute -inset-10 rounded-full bg-violet/20 blur-[120px]" />
+          <div className="absolute -inset-8 rounded-full bg-violet/20 blur-[110px]" />
           <GlareHover>
-            <SpotlightCard className="hero-console-card mx-auto w-full max-w-[27rem] p-5 sm:p-6 lg:p-7">
+            <SpotlightCard className="hero-console-card mx-auto w-full p-5 sm:p-6 lg:p-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div className="min-w-0">
                   <div className="font-mono text-xs uppercase tracking-[0.2em] text-dim">{t('hero.consoleTitle')}</div>
@@ -130,7 +125,11 @@ export default function Hero() {
 
               <div className="rounded-2xl border border-white/10 bg-black/45 p-4 font-mono text-sm shadow-inner">
                 <div className="mb-4 flex items-center justify-between gap-3 border-b border-white/10 pb-3">
-                  <div className="flex shrink-0 gap-2"><span className="h-3 w-3 rounded-full bg-rose" /><span className="h-3 w-3 rounded-full bg-yellow-400" /><span className="h-3 w-3 rounded-full bg-mint" /></div>
+                  <div className="flex shrink-0 gap-2">
+                    <span className="h-3 w-3 rounded-full bg-rose" />
+                    <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                    <span className="h-3 w-3 rounded-full bg-mint" />
+                  </div>
                   <span className="text-dim">developer.profile</span>
                 </div>
                 <pre className="console-pre whitespace-pre-wrap leading-7 text-muted">
