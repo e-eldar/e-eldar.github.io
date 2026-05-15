@@ -24,14 +24,14 @@ export default function Hero() {
   ];
 
   return (
-    <section className="hero-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
-      <div className="container-pro hero-grid-responsive grid min-w-0 items-center gap-10 pb-14 md:pb-16 xl:gap-16">
-        <div className="hero-copy min-w-0 overflow-visible">
+    <section className="hero-final-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
+      <div className="container-pro hero-final-grid grid min-w-0 items-center gap-10 pb-14 md:pb-16">
+        <div className="hero-final-copy min-w-0 overflow-visible">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
-            className="hero-badge inline-flex max-w-full flex-wrap items-center gap-3 rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-violet shadow-glow sm:text-[0.72rem]"
+            className="hero-badge hero-final-badge inline-flex max-w-full flex-wrap items-center gap-3 rounded-full border border-violet/30 bg-violet/10 px-4 py-2 font-mono text-[0.68rem] uppercase tracking-[0.18em] text-violet shadow-glow sm:text-[0.72rem]"
           >
             <span className="h-2 w-2 shrink-0 rounded-full bg-mint shadow-[0_0_20px_rgba(52,211,153,.75)]" />
             <ShinyText>{t('hero.badge')}</ShinyText>
@@ -41,7 +41,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.7 }}
-            className="hero-eyebrow mt-6 font-mono text-xs uppercase tracking-[0.24em] text-dim"
+            className="hero-final-eyebrow mt-6 font-mono text-xs uppercase tracking-[0.24em] text-dim"
           >
             {t('hero.eyebrow')}
           </motion.div>
@@ -50,19 +50,19 @@ export default function Hero() {
             initial={{ opacity: 0, y: 26, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.16, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="hero-title-safe mt-5"
+            className="hero-final-title mt-5"
             aria-label="Junior Full-Stack Web-Developer"
           >
-            <span className="hero-title-line hero-title-line-junior">Junior</span>
-            <span className="hero-title-line hero-title-line-stack">Full-Stack</span>
-            <span className="hero-title-line hero-title-line-gradient hero-title-line-web">Web-Developer</span>
+            <span className="hero-final-title-line hero-final-title-junior">Junior</span>
+            <span className="hero-final-title-line hero-final-title-stack">Full-Stack</span>
+            <span className="hero-final-title-line hero-final-title-web">Web-Developer</span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.32, duration: 0.7 }}
-            className="hero-type-row mt-5 flex min-h-[2rem] flex-wrap items-center gap-3 font-mono text-sm text-muted"
+            className="hero-final-type mt-5 flex min-h-[2rem] flex-wrap items-center gap-3 font-mono text-sm text-muted"
           >
             <span className="text-dim">builds:</span>
             <TextType words={typedWords} className="text-aqua" />
@@ -72,7 +72,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.42, duration: 0.75 }}
-            className="hero-lead mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg lg:text-xl"
+            className="hero-final-lead mt-6 max-w-2xl text-base leading-8 text-muted sm:text-lg lg:text-xl"
           >
             {t('hero.lead')}
           </motion.p>
@@ -81,7 +81,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.54, duration: 0.7 }}
-            className="hero-actions mt-8 flex flex-col gap-3 sm:flex-row"
+            className="hero-final-actions mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <MagneticButton to="/projects" className="btn-primary">
               {t('hero.primary')} <ArrowRight size={18} />
@@ -95,7 +95,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.64, duration: 0.7 }}
-            className="hero-stats mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
+            className="hero-final-stats mt-10 grid grid-cols-2 gap-4 border-t border-white/10 pt-7 sm:grid-cols-4"
           >
             {stats.map(item => (
               <div key={item.labelKey} className="min-w-0">
@@ -110,11 +110,11 @@ export default function Hero() {
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.32, duration: 0.8 }}
-          className="hero-console-wrap relative min-w-0"
+          className="hero-final-console-wrap relative min-w-0"
         >
           <div className="absolute -inset-8 rounded-full bg-violet/20 blur-[110px]" />
           <GlareHover>
-            <SpotlightCard className="hero-console-card mx-auto w-full p-5 sm:p-6 lg:p-7">
+            <SpotlightCard className="hero-final-console-card mx-auto w-full p-5 sm:p-6 lg:p-7">
               <div className="mb-5 flex items-center justify-between gap-4">
                 <div className="min-w-0">
                   <div className="font-mono text-xs uppercase tracking-[0.2em] text-dim">{t('hero.consoleTitle')}</div>
@@ -135,7 +135,7 @@ export default function Hero() {
                 <pre className="console-pre whitespace-pre-wrap leading-7 text-muted">
 <span className="text-mint">const</span> developer = {'{'}
   name: <span className="text-violet">'{profile.name}'</span>,
-  role: <span className="text-aqua">'{profile.title}'</span>,
+  role: <span className="text-aqua">'Junior Full-Stack Web-Developer'</span>,
   location: <span className="text-violet">'{profile.location}'</span>,
   focus: <span className="text-aqua">'<RotatingText words={['frontend', 'backend', 'databases', 'auth']} />'</span>,
   mindset: <span className="text-violet">'build → test → improve'</span>
