@@ -23,18 +23,15 @@ export default function Hero() {
     { icon: Sparkles, label: t('hero.cards.ui'), value: 'React Bits' },
   ];
 
-  const titleLine1Parts = String(t('hero.line1') || '')
-    .split(' ')
-    .filter(Boolean);
-  const titleLine2Parts = String(t('hero.line2') || '')
-    .split(' ')
-    .filter(Boolean);
-  const titleLine2Display = titleLine2Parts.join('-');
+  // Hero title is intentionally fixed to 3 clean lines.
+  // This prevents ugly word breaking such as "Full-Sta / ck" or "Web-Develo / per".
+  const titleLine1Parts = ['Junior', 'Full-Stack'];
+  const titleLine2Display = 'Web-Developer';
 
   return (
     <section className="relative z-10 overflow-hidden pt-32 sm:pt-36 lg:pt-40">
-      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,.98fr)_minmax(360px,.9fr)] lg:gap-16 xl:grid-cols-[minmax(0,.92fr)_minmax(390px,.86fr)]">
-        <div className="min-w-0 max-w-4xl">
+      <div className="container-pro grid min-h-[calc(100vh-6rem)] min-w-0 items-center gap-12 pb-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.9fr)] lg:gap-16 xl:grid-cols-[minmax(0,0.9fr)_minmax(390px,0.86fr)]">
+        <div className="min-w-0 max-w-[42rem]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,14 +55,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 34, filter: 'blur(12px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.18, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-[min(100%,720px)] break-normal font-display text-[clamp(3.15rem,8.8vw,4.8rem)] font-extrabold leading-[0.92] tracking-[-0.072em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(4rem,7vw,5.35rem)] lg:text-[clamp(3.85rem,5.05vw,4.75rem)] xl:text-[clamp(4.15rem,4.85vw,5.15rem)] 2xl:text-[5.7rem]"
+            className="mt-5 max-w-[100%] break-normal font-display text-[clamp(2.35rem,13vw,4rem)] font-extrabold leading-[0.94] tracking-[-0.06em] text-white [hyphens:none] [overflow-wrap:normal] [word-break:normal] sm:text-[clamp(3.4rem,8.5vw,4.8rem)] lg:text-[clamp(3.25rem,4.35vw,4.25rem)] xl:text-[4.35rem] 2xl:text-[4.55rem]"
           >
             {titleLine1Parts.map(part => (
               <span key={`line1-${part}`} className="block w-fit max-w-full whitespace-nowrap">
                 {part}
               </span>
             ))}
-            <span className="block w-fit max-w-full whitespace-nowrap gradient-text text-[0.86em] tracking-[-0.078em] sm:text-[0.9em]">
+            <span className="block w-fit max-w-full whitespace-nowrap gradient-text text-[0.86em] tracking-[-0.05em] max-[420px]:whitespace-normal sm:text-[0.9em]">
               {titleLine2Display}
             </span>
           </motion.h1>
