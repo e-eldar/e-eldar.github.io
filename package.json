@@ -1,0 +1,17 @@
+{
+  "name": "eldar-portfolio-premium",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Premium portfolio for Eldar Jusic - React + Vite + Tailwind + Express + SQLite",
+  "scripts": {
+    "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install",
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "seed:admin": "npm --prefix backend run seed:admin",
+    "install:fresh": "node scripts/fresh-install.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
