@@ -1292,3 +1292,353 @@ li,
 .skill-chip {
   overflow-wrap: anywhere;
 }
+
+
+/* =========================================================
+   HERO + GLOBAL RESPONSIVE FINAL OVERRIDE
+   This block intentionally comes LAST to override older rules.
+   Goal: the hero title is always visible as exactly:
+   Junior / Full-Stack / Web-Developer
+   ========================================================= */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.container-pro {
+  width: min(100% - 2rem, 1280px) !important;
+  max-width: 1280px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+
+.hero-section {
+  width: 100% !important;
+  overflow: visible !important;
+  padding-top: clamp(5.5rem, 8vw, 8.5rem) !important;
+}
+
+.hero-section * {
+  min-width: 0;
+}
+
+.hero-grid-responsive {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(2rem, 5vw, 4.5rem) !important;
+  overflow: visible !important;
+}
+
+.hero-copy {
+  width: 100% !important;
+  max-width: 48rem !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+  justify-self: center !important;
+}
+
+.hero-title-safe {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0.03em !important;
+  overflow: visible !important;
+  line-height: 0.92 !important;
+  letter-spacing: -0.055em !important;
+  font-family: 'Syne', sans-serif !important;
+}
+
+.hero-title-line,
+.hero-title-line-junior,
+.hero-title-line-stack,
+.hero-title-line-web,
+.hero-title-line-gradient {
+  display: block !important;
+  max-width: none !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 0.92 !important;
+  font-weight: 800 !important;
+}
+
+.hero-title-line-junior {
+  color: #fff !important;
+  font-size: clamp(3.8rem, 6vw, 6.5rem) !important;
+}
+
+.hero-title-line-stack {
+  color: #fff !important;
+  font-size: clamp(3.25rem, 5.25vw, 5.75rem) !important;
+}
+
+.hero-title-line-web {
+  font-size: clamp(2.75rem, 3.85vw, 4.45rem) !important;
+  letter-spacing: -0.045em !important;
+}
+
+.hero-title-line-gradient {
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #a78bfa 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+.hero-type-row,
+.hero-lead,
+.hero-actions,
+.hero-stats {
+  max-width: 100% !important;
+}
+
+.hero-lead {
+  max-width: 42rem !important;
+}
+
+.hero-console-wrap {
+  width: 100% !important;
+  max-width: 31rem !important;
+  justify-self: center !important;
+}
+
+.hero-console-card {
+  width: 100% !important;
+  max-width: 31rem !important;
+}
+
+.console-pre {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+@media (min-width: 1180px) {
+  .hero-grid-responsive {
+    grid-template-columns: minmax(0, 44rem) minmax(24rem, 31rem) !important;
+    column-gap: clamp(3rem, 5.5vw, 6rem) !important;
+  }
+
+  .hero-copy {
+    justify-self: end !important;
+  }
+
+  .hero-console-wrap {
+    justify-self: start !important;
+  }
+}
+
+@media (max-width: 1179px) {
+  .hero-copy {
+    text-align: left !important;
+  }
+
+  .hero-console-wrap {
+    margin-top: 1rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .container-pro {
+    width: min(100% - 1.5rem, 1280px) !important;
+  }
+
+  .hero-section {
+    padding-top: 5.8rem !important;
+  }
+
+  .hero-grid-responsive {
+    gap: 2rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  .hero-badge {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0.62rem 0.85rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.105em !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .hero-title-safe {
+    margin-top: 1.15rem !important;
+    gap: 0.06em !important;
+    letter-spacing: -0.04em !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.85rem, 12.2vw, 4.1rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2.35rem, 9.8vw, 3.35rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.82rem, 7.4vw, 2.55rem) !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  .hero-type-row {
+    margin-top: 1.25rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .hero-lead {
+    margin-top: 1.35rem !important;
+    font-size: 1rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .hero-actions {
+    width: 100% !important;
+    margin-top: 1.65rem !important;
+  }
+
+  .btn-primary,
+  .btn-ghost {
+    width: 100% !important;
+    min-height: 3.1rem !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.85rem !important;
+    margin-top: 2rem !important;
+  }
+
+  .hero-stats > div {
+    border: 1px solid rgba(255,255,255,.08) !important;
+    border-radius: 1rem !important;
+    background: rgba(255,255,255,.025) !important;
+    padding: 0.85rem !important;
+  }
+
+  .hero-stats .font-display {
+    font-size: 1.85rem !important;
+  }
+
+  .hero-stats .font-mono {
+    font-size: 0.58rem !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .hero-console-card {
+    padding: 1rem !important;
+    border-radius: 1.35rem !important;
+  }
+
+  .console-pre {
+    font-size: 0.72rem !important;
+    line-height: 1.72 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .container-pro {
+    width: min(100% - 1.25rem, 1280px) !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.45rem, 11.7vw, 3.2rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2rem, 9.2vw, 2.65rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.52rem, 7.05vw, 2rem) !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-console-card .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cf-turnstile {
+    transform: scale(0.86) !important;
+    transform-origin: left top !important;
+    min-height: 58px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title-line-junior { font-size: 2.35rem !important; }
+  .hero-title-line-stack { font-size: 1.9rem !important; }
+  .hero-title-line-web { font-size: 1.43rem !important; }
+}
+
+/* Wider responsive safety for the rest of the website */
+@media (max-width: 980px) {
+  .grid[class*="lg:grid-cols"],
+  .grid[class*="xl:grid-cols"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .glass-card,
+  .interactive-card,
+  .contact-tile,
+  .skill-chip,
+  .rounded-2xl,
+  .rounded-3xl,
+  .rounded-\[2rem\] {
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .stack-lab {
+    min-height: auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+    place-items: stretch !important;
+    transform: none !important;
+  }
+
+  .stack-lab::before,
+  .stack-lab::after {
+    display: none !important;
+  }
+
+  .stack-core {
+    grid-column: 1 / -1 !important;
+    width: 5.25rem !important;
+    height: 5.25rem !important;
+    margin: 0 auto 0.35rem !important;
+    border-radius: 1.2rem !important;
+    font-size: 2rem !important;
+  }
+
+  .stack-chip {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    justify-content: center !important;
+    animation: none !important;
+    font-size: 0.62rem !important;
+    padding: 0.65rem 0.5rem !important;
+  }
+}
