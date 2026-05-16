@@ -24,9 +24,9 @@ export default function Hero() {
   ];
 
   return (
-    <section className="hero-section hero-fixed-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
-      <div className="container-pro hero-fixed-grid grid min-w-0 items-center gap-10 pb-14 md:pb-16">
-        <div className="hero-copy hero-fixed-copy min-w-0 overflow-visible">
+    <section className="hero-section relative z-10 pt-28 sm:pt-32 xl:pt-36">
+      <div className="container-pro hero-grid-responsive grid min-w-0 items-center gap-10 pb-14 md:pb-16 xl:gap-16">
+        <div className="hero-copy min-w-0 overflow-visible">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,12 +50,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 26, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ delay: 0.16, duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="hero-title-final mt-5"
+            className="hero-title-safe mt-5"
             aria-label="Junior Full-Stack Web-Developer"
           >
-            <span className="hero-title-final-line hero-title-final-junior">Junior</span>
-            <span className="hero-title-final-line hero-title-final-stack">Full-Stack</span>
-            <span className="hero-title-final-line hero-title-final-web">Web-Developer</span>
+            <span className="hero-title-line hero-title-line-junior">Junior</span>
+            <span className="hero-title-line hero-title-line-stack">Full-Stack</span>
+            <span className="hero-title-line hero-title-line-gradient hero-title-line-web">Web-Developer</span>
           </motion.h1>
 
           <motion.div
@@ -110,7 +110,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.32, duration: 0.8 }}
-          className="hero-console-wrap hero-fixed-console relative min-w-0"
+          className="hero-console-wrap relative min-w-0"
         >
           <div className="absolute -inset-8 rounded-full bg-violet/20 blur-[110px]" />
           <GlareHover>
