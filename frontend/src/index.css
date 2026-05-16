@@ -2054,3 +2054,95 @@ li,
     font-size: clamp(1.42rem, 7.7vw, 1.9rem) !important;
   }
 }
+
+/* =========================================================
+   V12 SAMSUNG / SMALL-SCREEN HERO TITLE FIX
+   Final override: Web-Developer must always fit fully.
+   ========================================================= */
+.hero-title-line-web {
+  display: block !important;
+  width: max-content !important;
+  max-width: none !important;
+  padding-right: 0.28em !important; /* protects the last 'r' from gradient/glyph clipping */
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+@media (max-width: 720px) {
+  .hero-copy,
+  .hero-title-safe {
+    width: 100% !important;
+    max-width: min(100%, calc(100vw - 2rem)) !important;
+    overflow: visible !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.82rem, 8.15vw, 2.55rem) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -0.052em !important;
+    padding-right: 0.35em !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .container-pro,
+  .site-header .container-pro {
+    width: min(100% - 1.65rem, 1280px) !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: min(100%, calc(100vw - 1.65rem)) !important;
+  }
+
+  .hero-title-safe {
+    line-height: 0.98 !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.45rem, 14.2vw, 3.65rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2.1rem, 11.9vw, 3.05rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.58rem, 7.65vw, 2.18rem) !important;
+    letter-spacing: -0.058em !important;
+    padding-right: 0.45em !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .container-pro,
+  .site-header .container-pro {
+    width: min(100% - 1.35rem, 1280px) !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: min(100%, calc(100vw - 1.35rem)) !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.2rem, 13.5vw, 3.15rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(1.9rem, 11.4vw, 2.62rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.43rem, 7.35vw, 1.92rem) !important;
+    letter-spacing: -0.06em !important;
+    padding-right: 0.5em !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero-title-line-web {
+    font-size: 1.38rem !important;
+    letter-spacing: -0.065em !important;
+  }
+}
