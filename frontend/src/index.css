@@ -1316,3 +1316,176 @@ li,
   background: rgba(8, 8, 13, 0.9) !important;
 }
 /* === END STACK CORE LOGO VISIBILITY FIX === */
+
+/* =========================================================
+   FINAL HERO TITLE FIX — stable, readable, no overlap
+   The title is intentionally sized to ALWAYS fit beside the card:
+   Junior
+   Full-Stack
+   Web-Developer
+   ========================================================= */
+.hero-fixed-section {
+  overflow: hidden !important;
+}
+
+.hero-fixed-grid {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-inline: auto !important;
+  overflow: visible !important;
+}
+
+.hero-fixed-copy {
+  position: relative !important;
+  z-index: 2 !important;
+  max-width: 650px !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.hero-title-final {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  margin-top: 1.35rem !important;
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 0.88 !important;
+  letter-spacing: -0.055em !important;
+  color: #ffffff !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+  text-wrap: nowrap !important;
+}
+
+.hero-title-final-line {
+  display: block !important;
+  flex: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  text-wrap: nowrap !important;
+}
+
+.hero-title-final-junior {
+  font-size: clamp(3.65rem, 5.25vw, 6rem) !important;
+  color: #ffffff !important;
+}
+
+.hero-title-final-stack {
+  font-size: clamp(3.15rem, 4.72vw, 5.35rem) !important;
+  color: #ffffff !important;
+}
+
+.hero-title-final-web {
+  margin-top: 0.10em !important;
+  font-size: clamp(2.1rem, 3.38vw, 3.95rem) !important;
+  letter-spacing: -0.04em !important;
+  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #c4b5fd 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+@media (min-width: 1280px) {
+  .hero-fixed-grid {
+    grid-template-columns: minmax(0, 650px) minmax(360px, 450px) !important;
+    gap: clamp(5rem, 6vw, 7.5rem) !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .hero-fixed-console,
+  .hero-console-card {
+    width: 100% !important;
+    max-width: 450px !important;
+    justify-self: center !important;
+  }
+}
+
+@media (max-width: 1279px) {
+  .hero-fixed-grid {
+    grid-template-columns: 1fr !important;
+    gap: 3.25rem !important;
+    justify-items: start !important;
+  }
+
+  .hero-fixed-copy {
+    max-width: 760px !important;
+  }
+
+  .hero-fixed-console,
+  .hero-console-card {
+    width: 100% !important;
+    max-width: 560px !important;
+    justify-self: start !important;
+  }
+
+  .hero-title-final-junior {
+    font-size: clamp(3.55rem, 7.2vw, 5.6rem) !important;
+  }
+
+  .hero-title-final-stack {
+    font-size: clamp(3rem, 6.35vw, 4.95rem) !important;
+  }
+
+  .hero-title-final-web {
+    font-size: clamp(2.1rem, 4.75vw, 3.55rem) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-fixed-section {
+    padding-top: 6.25rem !important;
+  }
+
+  .hero-fixed-copy {
+    max-width: 100% !important;
+  }
+
+  .hero-title-final {
+    max-width: 100% !important;
+    line-height: 0.93 !important;
+    letter-spacing: -0.045em !important;
+  }
+
+  .hero-title-final-junior {
+    font-size: clamp(3rem, 13.2vw, 4.5rem) !important;
+  }
+
+  .hero-title-final-stack {
+    font-size: clamp(2.55rem, 11.2vw, 3.85rem) !important;
+  }
+
+  .hero-title-final-web {
+    font-size: clamp(1.78rem, 7.65vw, 2.65rem) !important;
+  }
+
+  .hero-badge {
+    max-width: 100% !important;
+    line-height: 1.45 !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-title-final-junior {
+    font-size: clamp(2.6rem, 12.6vw, 3.25rem) !important;
+  }
+
+  .hero-title-final-stack {
+    font-size: clamp(2.15rem, 10.4vw, 2.75rem) !important;
+  }
+
+  .hero-title-final-web {
+    font-size: clamp(1.52rem, 7.25vw, 2rem) !important;
+  }
+}
+/* === END FINAL HERO TITLE FIX === */
