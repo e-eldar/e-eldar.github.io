@@ -1881,3 +1881,176 @@ li,
     grid-template-columns: 1fr !important;
   }
 }
+
+/* =========================================================
+   EMERGENCY HERO READABILITY FIX — v11
+   This is the final override for the Home/Domov hero title.
+   It gives the title more real space, moves the profile card away,
+   and makes Web-Developer smaller enough to ALWAYS show completely.
+   ========================================================= */
+.hero-section {
+  overflow: visible !important;
+}
+
+.hero-grid-responsive {
+  grid-template-columns: minmax(0, 780px) minmax(300px, 380px) !important;
+  gap: clamp(4rem, 6vw, 7.5rem) !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+
+.hero-copy,
+.hero-title-safe {
+  max-width: 780px !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.hero-title-safe {
+  position: relative !important;
+  z-index: 20 !important;
+  line-height: 0.9 !important;
+  letter-spacing: -0.052em !important;
+}
+
+.hero-title-line {
+  display: block !important;
+  width: max-content !important;
+  max-width: none !important;
+  min-width: max-content !important;
+  white-space: nowrap !important;
+  text-wrap: nowrap !important;
+  overflow: visible !important;
+  padding-right: 0.42em !important;
+}
+
+.hero-title-line-junior {
+  font-size: clamp(4.65rem, 5.65vw, 6.15rem) !important;
+}
+
+.hero-title-line-stack {
+  font-size: clamp(4.1rem, 5.05vw, 5.5rem) !important;
+}
+
+.hero-title-line-web {
+  font-size: clamp(2.95rem, 3.62vw, 3.95rem) !important;
+  letter-spacing: -0.034em !important;
+  padding-right: 0.7em !important;
+  transform: translateZ(0) !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.hero-console-wrap {
+  max-width: 380px !important;
+  justify-self: end !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+.hero-console-card {
+  max-width: 380px !important;
+}
+
+.hero-terminal {
+  overflow: hidden !important;
+}
+
+/* Medium laptops: keep two columns but make the title/card safer. */
+@media (max-width: 1500px) and (min-width: 1181px) {
+  .hero-grid-responsive {
+    grid-template-columns: minmax(0, 650px) minmax(300px, 360px) !important;
+    gap: clamp(3.25rem, 5vw, 5.5rem) !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: 650px !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 360px !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(4.05rem, 4.9vw, 5.05rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(3.55rem, 4.38vw, 4.5rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(2.45rem, 3.04vw, 3.12rem) !important;
+    letter-spacing: -0.03em !important;
+  }
+}
+
+/* Tablet and below: profile card goes under the title, never beside it. */
+@media (max-width: 1180px) {
+  .hero-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+
+  .hero-copy,
+  .hero-title-safe {
+    max-width: 100% !important;
+  }
+
+  .hero-console-wrap,
+  .hero-console-card {
+    max-width: 590px !important;
+    justify-self: start !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(3.65rem, 10vw, 6.2rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(3.15rem, 8.7vw, 5.45rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(2.45rem, 6.7vw, 4.05rem) !important;
+    letter-spacing: -0.032em !important;
+  }
+}
+
+/* Phones: title fits inside the screen; no horizontal scroll. */
+@media (max-width: 720px) {
+  .hero-title-line {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding-right: 0 !important;
+  }
+
+  .hero-title-line-junior {
+    font-size: clamp(2.75rem, 15vw, 4.55rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(2.25rem, 12.6vw, 3.75rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.78rem, 9vw, 2.72rem) !important;
+    letter-spacing: -0.022em !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-title-line-junior {
+    font-size: clamp(2.35rem, 14vw, 3.25rem) !important;
+  }
+
+  .hero-title-line-stack {
+    font-size: clamp(1.92rem, 11.25vw, 2.62rem) !important;
+  }
+
+  .hero-title-line-web {
+    font-size: clamp(1.42rem, 7.7vw, 1.9rem) !important;
+  }
+}
