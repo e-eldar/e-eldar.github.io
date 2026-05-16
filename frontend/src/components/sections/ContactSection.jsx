@@ -135,9 +135,9 @@ export default function ContactSection() {
                   <p className="mt-4 leading-8 text-muted">{t('contact.lead')}</p>
 
                   <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/35 p-4 font-mono text-sm">
-                    <div className="mb-3 flex items-center gap-2 text-dim"><TerminalSquare size={16} /> contact.flow</div>
-                    <div className="text-muted">status: <span className="text-mint">ready</span></div>
-                    <div className="text-muted">api: <span className="text-aqua">Express</span> · db: <span className="text-aqua">SQLite</span></div>
+                    <div className="mb-3 flex items-center gap-2 text-dim"><TerminalSquare size={16} /> message.flow</div>
+                    <div className="text-muted">status: <span className="text-mint">available</span></div>
+                    <div className="text-muted">reply: <span className="text-aqua">email</span> · usually: <span className="text-aqua">soon</span></div>
                     <div className="text-muted">open_to: <TextType words={t('contact.availability')} className="text-violet" /></div>
                   </div>
                 </SpotlightCard>

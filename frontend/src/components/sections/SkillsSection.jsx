@@ -67,7 +67,7 @@ export default function SkillsSection() {
 
           <AnimatedContent delay={0.1}>
             <div className="stack-lab">
-              <div className="stack-core gradient-text">EL</div>
+              <div className="stack-core"><span className="stack-core-logo">EJ</span></div>
               {labItems.map(({ label, icon: Icon }) => (
                 <div key={label} className="stack-chip"><Icon size={15} /> {label}</div>
               ))}

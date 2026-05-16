@@ -1293,157 +1293,26 @@ li,
   overflow-wrap: anywhere;
 }
 
-/* =========================================================
-   HERO TITLE SAFE FIX — final surgical override
-   Keeps the original look, but prevents overlap/clipping.
-   Required visual:
-   Junior
-   Full-Stack
-   Web-Developer
-   ========================================================= */
-.hero-section {
-  overflow: hidden !important;
+
+/* === STACK CORE LOGO VISIBILITY FIX === */
+.stack-core {
+  color: #ffffff !important;
+  background: rgba(8, 8, 13, 0.88) !important;
+  -webkit-text-fill-color: initial !important;
 }
 
-.hero-grid-responsive {
-  display: grid !important;
-  justify-content: center !important;
-  align-items: center !important;
-  overflow: visible !important;
+.stack-core-logo,
+.orbital-core {
+  display: inline-block;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 0 28px rgba(124, 108, 255, 0.55), 0 0 16px rgba(56, 189, 248, 0.35);
 }
 
-.hero-copy {
-  container-type: inline-size;
-  min-width: 0 !important;
-  overflow: visible !important;
+.orbital-core {
+  background: rgba(8, 8, 13, 0.9) !important;
 }
-
-.hero-title-safe {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-top: 1.35rem !important;
-  font-family: 'Syne', sans-serif !important;
-  font-weight: 800 !important;
-  line-height: 0.92 !important;
-  letter-spacing: -0.055em !important;
-  color: #fff !important;
-  overflow: visible !important;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
-}
-
-.hero-title-line {
-  display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
-  text-wrap: nowrap !important;
-}
-
-.hero-title-line-junior {
-  font-size: clamp(3.25rem, 12cqw, 5.1rem) !important;
-}
-
-.hero-title-line-stack {
-  font-size: clamp(2.85rem, 10.8cqw, 4.55rem) !important;
-}
-
-.hero-title-line-web {
-  margin-top: 0.08em !important;
-  font-size: clamp(2.05rem, 7.55cqw, 3rem) !important;
-  letter-spacing: -0.04em !important;
-}
-
-.hero-title-line-gradient {
-  background: linear-gradient(90deg, #34d399 0%, #38bdf8 52%, #c4b5fd 100%) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* Full desktop: keep two columns, but reserve clear space between title and card. */
-@media (min-width: 1280px) {
-  .hero-grid-responsive {
-    grid-template-columns: minmax(0, 620px) minmax(360px, 430px) !important;
-    gap: clamp(4rem, 6vw, 7rem) !important;
-  }
-
-  .hero-copy,
-  .hero-title-safe,
-  .hero-lead {
-    max-width: 620px !important;
-  }
-
-  .hero-console-wrap,
-  .hero-console-card {
-    max-width: 430px !important;
-    width: 100% !important;
-    justify-self: center !important;
-  }
-}
-
-/* Small laptops: stack earlier so the card never covers the title. */
-@media (max-width: 1279px) {
-  .hero-grid-responsive {
-    grid-template-columns: 1fr !important;
-    gap: 3rem !important;
-    align-items: start !important;
-  }
-
-  .hero-copy {
-    max-width: 720px !important;
-    width: 100% !important;
-  }
-
-  .hero-console-wrap,
-  .hero-console-card {
-    max-width: 560px !important;
-    width: 100% !important;
-    justify-self: start !important;
-  }
-}
-
-/* Tablets and phones: make all three title lines responsive to the actual column width. */
-@media (max-width: 720px) {
-  .hero-section {
-    padding-top: 6.25rem !important;
-  }
-
-  .hero-title-safe {
-    margin-top: 1.15rem !important;
-    line-height: 0.96 !important;
-    letter-spacing: -0.045em !important;
-  }
-
-  .hero-title-line-junior {
-    font-size: clamp(2.85rem, 15cqw, 4.4rem) !important;
-  }
-
-  .hero-title-line-stack {
-    font-size: clamp(2.4rem, 12.4cqw, 3.75rem) !important;
-  }
-
-  .hero-title-line-web {
-    font-size: clamp(1.82rem, 8.7cqw, 2.6rem) !important;
-  }
-}
-
-@media (max-width: 420px) {
-  .hero-title-line-junior {
-    font-size: clamp(2.5rem, 14.8cqw, 3.35rem) !important;
-  }
-
-  .hero-title-line-stack {
-    font-size: clamp(2.08rem, 11.9cqw, 2.85rem) !important;
-  }
-
-  .hero-title-line-web {
-    font-size: clamp(1.58rem, 8.15cqw, 2.1rem) !important;
-  }
-}
-/* === END HERO TITLE SAFE FIX === */
+/* === END STACK CORE LOGO VISIBILITY FIX === */
