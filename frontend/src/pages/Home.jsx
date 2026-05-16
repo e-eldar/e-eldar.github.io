@@ -6,7 +6,6 @@ import EducationSection from '../components/sections/EducationSection.jsx';
 import ProjectsSection from '../components/sections/ProjectsSection.jsx';
 import ValuesSection from '../components/sections/ValuesSection.jsx';
 import TerminalSection from '../components/sections/TerminalSection.jsx';
-import ContactSection from '../components/sections/ContactSection.jsx';
 import { pageMotion } from '../utils/motion.js';
 
 export default function Home() {
@@ -19,7 +18,6 @@ export default function Home() {
       <ProjectsSection compact />
       <ValuesSection />
       <TerminalSection />
-      <ContactSection />
     </motion.main>
   );
 }
